@@ -1,6 +1,9 @@
 # *Snap!* Networking System
 *Snap!* Networking System is an addition to the *Snap!* block coding editor. This allows you to have networking capabilities and easy to use matchmaking. This project is currently in development, thank you!
 
+### Notice
+All images shown are concept and not yet finalized. There may be changed features, or an entirely new design all together. Thank you for understanding.
+
 ### Example(s)
 
 ![image](previews/example-1.png)
