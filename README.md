@@ -1,5 +1,14 @@
 # Snap<i>!</i> Networking System
+
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+
 Snap<i>!</i> Networking System is an addition to the Snap<i>!</i> block coding editor. This allows you to have networking capabilities and easy to use matchmaking. This project is currently in development, thank you!
+
+---
 
 ### Notice
 All images shown are concept and not yet finalized. There may be changed features, or an entirely new design all together. Thank you for understanding.
@@ -26,3 +35,25 @@ Snap<i>!</i> Networking System is 100% MIT. What does this mean? You are allowed
 
 ### Issues & Concerns
 Have any bugs, concerns, or suggestions? Feel free to either make an issue request or if you have a solution to a problem, maybe even a pull request. Thank you!
+
+
+
+
+
+
+
+
+
+
+
+
+[contributors-shield]: https://img.shields.io/github/contributors/HooferDevelops/snap-advanced-multiplayer-system.svg?style=flat-square
+[contributors-url]: https://github.com/HooferDevelops/snap-advanced-multiplayer-system/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/HooferDevelops/snap-advanced-multiplayer-system.svg?style=flat-square
+[forks-url]: https://github.com/HooferDevelops/snap-advanced-multiplayer-system/network/members
+[stars-shield]: https://img.shields.io/github/stars/HooferDevelops/snap-advanced-multiplayer-system.svg?style=flat-square
+[stars-url]: https://github.com/HooferDevelops/snap-advanced-multiplayer-system/stargazers
+[issues-shield]: https://img.shields.io/github/issues/HooferDevelops/snap-advanced-multiplayer-system.svg?style=flat-square
+[issues-url]: https://github.com/HooferDevelops/snap-advanced-multiplayer-system/issues
+[license-shield]: https://img.shields.io/github/license/HooferDevelops/snap-advanced-multiplayer-system.svg?style=flat-square
+[license-url]: https://github.com/HooferDevelops/snap-advanced-multiplayer-system/blob/master/LICENSE.txt
