@@ -6,12 +6,15 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-Snap<i>!</i> Networking System is an addition to the Snap<i>!</i> block coding editor. This allows you to have networking capabilities and easy to use matchmaking. This project is currently in development, thank you!
+> Snap<i>!</i> Networking System is an addition to the Snap<i>!</i> block coding editor. This allows you to have networking capabilities and easy to use matchmaking. This project is currently in development, thank you!
 
 ---
 
 ### Notice
 All images shown are concept and not yet finalized. There may be changed features, or an entirely new design all together. Thank you for understanding.
+
+### Try it out
+The example project is not yet out as the product is not yet finalized. This should be updated to a link of the Networking System inside of Snap<i>!</i>. Thank you for your paitence and understanding.
 
 ### Example(s)
 
