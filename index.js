@@ -18,7 +18,6 @@ global.Projects = Projects;
 // Connection Port
 http.listen(process.env.PORT || 3000);
 
-console.log(new Lobby(null, "test lobby"));
 io.on('connection', (socket) => {
 
 
@@ -85,8 +84,41 @@ io.on('connection', (socket) => {
         var list = Object.keys(Projects[data.projectName].lobbies).map(l=>{
             return Projects[data.projectName].lobbies[l].name;
         })
-        console.log(list);
         socket.emit("getLobbies", list);
+    })
+
+    socket.on("tellHost", (data)=>{
+        // check if data has project name
+        // check if data has lobby name
+        // check if lobby exits
+        // emit data to lobby host
+        
+        if (!data || !data.projectName || !data.lobbyName || !data.info || !data.name)
+            return;
+        if (!Projects[data.projectName])
+            return;
+        if (!Projects[data.projectName].lobbies[data.lobbyName])
+            return;
+        
+        Projects[data.projectName].lobbies[data.lobbyName].host.emit("host-" + Projects[data.projectName].lobbies[data.lobbyName].name + "-" + data.name, data.info);
+    })
+
+    socket.on("tellClient", (data)=>{
+        // check if data has project name
+        // check if data has lobby name
+        // check if lobby exits
+        // emit data to lobby host
+
+        if (!data || !data.projectName || !data.lobbyName || !data.info || !data.name)
+            return;
+        if (!Projects[data.projectName])
+            return;
+        if (!Projects[data.projectName].lobbies[data.lobbyName])
+            return;
+        Object.keys(Projects[data.projectName].lobbies[data.lobbyName].users).forEach(userIndex=>{
+            user = Projects[data.projectName].lobbies[data.lobbyName].users[userIndex];
+            user.socket.emit("client-" + Projects[data.projectName].lobbies[data.lobbyName].name + "-" + data.name, data.info);
+        })
     })
 
     socket.on("disconnect", (data)=>{
