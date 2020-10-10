@@ -64,9 +64,9 @@ io.on('connection', (socket) => {
         var project = Projects[data.projectName];
         var lobby = project.lobbies[data.lobbyName];
         // check if user is already connected to lobby
-        if (lobby[socket.id])
+        if (lobby.users[socket.id])
             return;
-        lobby[socket.id] = new User(socket);
+        lobby.users[socket.id] = new User(socket);
         socket.emit("joinLobbyInstance", data.lobbyName);
     })
 
@@ -94,7 +94,7 @@ io.on('connection', (socket) => {
             Object.keys(Projects[project].lobbies).forEach((lobby)=>{
                 if (Projects[project].lobbies[lobby].host == socket){
                     Object.keys(Projects[project].lobbies[lobby].users).forEach(user=>{
-                        Projects[project].lobbies[lobby].users[user].disconnect();
+                        Projects[project].lobbies[lobby].users[user].socket.disconnect();
                     })
                     delete Projects[project].lobbies[lobby];
                 }
