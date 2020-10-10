@@ -24,8 +24,8 @@ All images shown are concept and not yet finalized. There may be changed feature
 
 ![image](previews/roadmap-1.png)
 
-- [ ] Basic Connection System for Client and Host
-- [ ] Ability to communicate from Client and Host
+- [x] Basic Connection System for Client and Host
+- [x] Ability to communicate from Client and Host
 - [ ] Advanced features for speaking to specific clients
 - [ ] Statistic managing system
 - [ ] Free to use hosting 24/7
