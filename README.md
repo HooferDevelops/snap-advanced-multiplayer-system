@@ -1,4 +1,4 @@
-![logo](prevews/Snap!NetworkingSystem.png)
+![logo](previews/network-logo-1.png)
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
