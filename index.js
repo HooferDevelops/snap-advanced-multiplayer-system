@@ -87,5 +87,19 @@ io.on('connection', (socket) => {
         console.log("disconnected");
         // check if socket was a host
         // delete server instance and emit disconnect
+        
+
+        // oh my goodness this code hurts my head, i would revise it but i don't feel like it
+        Object.keys(Projects).forEach((project)=>{
+            Object.keys(Projects[project].lobbies).forEach((lobby)=>{
+                if (Projects[project].lobbies[lobby].host == socket){
+                    Object.keys(Projects[project].lobbies[lobby].users).forEach(user=>{
+                        Projects[project].lobbies[lobby].users[user].disconnect();
+                    })
+                    delete Projects[project].lobbies[lobby];
+                }
+            })
+        })
+
     })
 });
