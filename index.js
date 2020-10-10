@@ -115,6 +115,9 @@ io.on('connection', (socket) => {
             return;
         if (!Projects[data.projectName].lobbies[data.lobbyName])
             return;
+        if (data.info.contents)
+            data.info = data.info.contents;
+        
         Object.keys(Projects[data.projectName].lobbies[data.lobbyName].users).forEach(userIndex=>{
             user = Projects[data.projectName].lobbies[data.lobbyName].users[userIndex];
             user.socket.emit("client-" + Projects[data.projectName].lobbies[data.lobbyName].name + "-" + data.name, data.info);
