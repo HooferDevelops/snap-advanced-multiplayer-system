@@ -27,9 +27,10 @@ io.on('connection', (socket) => {
         // check if data has a project name
         // check if project name already exists in given context
         // create a new project instance
-        if (!data || !data.projectName || Projects[data.projectName]){
+        if (!data || !data.projectName)
             return;
-        }
+        if (Projects[data.projectName])
+            return;
         
         Projects[data.projectName] = new Project(data.projectName);
     })
@@ -39,9 +40,10 @@ io.on('connection', (socket) => {
         // check if project name exists in projects
         // create new lobby instance
         // emit back a response of the lobby name
-        if (!data || !data.projectName || !Projects[data.projectName]){
+        if (!data || !data.projectName)
             return;
-        }
+        if (!Projects[data.projectName])
+            return;
 
         var id = Math.floor(Math.random() * 99999999);
         var lobbyName = data.projectName + "-" + id;
@@ -57,9 +59,12 @@ io.on('connection', (socket) => {
         // check if lobby exists inside of project
         // add user to lobby
         // emit back a response (likely the lobby name)
-        if (!data || !data.projectName || !data.lobbyName || !Projects[data.projectName] ||  !Projects[data.projectName].lobbies[data.lobbyName]){
+        if (!data || !data.projectName || !data.lobbyName)
             return;
-        }
+        if (!Projects[data.projectName])
+            return;
+        if (!Projects[data.projectName].lobbies[data.lobbyName])
+            return;
         
         var project = Projects[data.projectName];
         var lobby = project.lobbies[data.lobbyName];
@@ -72,9 +77,10 @@ io.on('connection', (socket) => {
 
     socket.on("getLobbies", (data)=>{
         // check if data has project name
-        if (!data || !data.projectName || !Projects[data.projectName]){
+        if (!data || !data.projectName)
             return;
-        }
+        if (!Projects[data.projectName])
+            return;
         
         var list = Object.keys(Projects[data.projectName].lobbies).map(l=>{
             return Projects[data.projectName].lobbies[l].name;
