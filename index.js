@@ -4,12 +4,16 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
 // Classes
-var Lobby = require("./objects/lobbytemplate.js")
-var Project = require("./objects/projecttemplate.js")
+var Lobby = require("./objects/lobby.js")
+var Project = require("./objects/project.js")
+var User = require("./objects/user.js")
+
 // tl;dr this is basically a holder for all of the 'servers'
 var Projects = {
 
 }
+// temp
+global.Projects = Projects;
 
 // Connection Port
 http.listen(process.env.PORT || 3000);
@@ -44,6 +48,39 @@ io.on('connection', (socket) => {
 
         Projects[data.projectName].lobbies[lobbyName] = new Lobby(id, lobbyName, socket);
         socket.emit("createLobbyInstance", lobbyName);
+    })
+
+    socket.on("joinLobbyInstance", (data)=>{
+        // check if data has project name
+        // check if data has lobby name
+        // check if project exists
+        // check if lobby exists inside of project
+        // add user to lobby
+        // emit back a response (likely the lobby name)
+        if (!data || !data.projectName || !data.lobbyName || !Projects[data.projectName] ||  !Projects[data.projectName].lobbies[data.lobbyName]){
+            return;
+        }
+        
+        var project = Projects[data.projectName];
+        var lobby = project.lobbies[data.lobbyName];
+        // check if user is already connected to lobby
+        if (lobby[socket.id])
+            return;
+        lobby[socket.id] = new User(socket);
+        socket.emit("joinLobbyInstance", data.lobbyName);
+    })
+
+    socket.on("getLobbies", (data)=>{
+        // check if data has project name
+        if (!data || !data.projectName || !Projects[data.projectName]){
+            return;
+        }
+        
+        var list = Object.keys(Projects[data.projectName].lobbies).map(l=>{
+            return Projects[data.projectName].lobbies[l].name;
+        })
+        console.log(list);
+        socket.emit("getLobbies", list);
     })
 
     socket.on("disconnect", (data)=>{
