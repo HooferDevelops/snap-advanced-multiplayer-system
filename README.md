@@ -1,4 +1,4 @@
-# Snap<i>!</i> Networking System
+![logo](prevews/Snap!NetworkingSystem.png)
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -39,8 +39,8 @@ Snap<i>!</i> Networking System is 100% MIT. What does this mean? You are allowed
 ## Issues & Concerns
 Have any bugs, concerns, or suggestions? Feel free to either make an issue request or if you have a solution to a problem, maybe even a pull request. Thank you!
 
-
-
+## Endorsement
+Snap<i>!</i> is not endorsed or officially made by snap.berkeley.edu. Thank you for understanding.
 
 
 
