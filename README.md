@@ -20,7 +20,6 @@ All images shown are concept and not yet finalized. There may be changed feature
 ## Example(s)
 
 ![image](previews/example-1.png)
-![gif](previews/example-2.gif)
 ![gif](previews/example-3.gif)
 
 ## Roadmap
