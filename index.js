@@ -26,6 +26,7 @@ io.on('connection', (socket) => {
         // check if data has a project name
         // check if project name already exists in given context
         // create a new project instance
+        
         if (!data || !data.projectName)
             return;
         if (Projects[data.projectName])
@@ -39,6 +40,7 @@ io.on('connection', (socket) => {
         // check if project name exists in projects
         // create new lobby instance
         // emit back a response of the lobby name
+
         if (!data || !data.projectName)
             return;
         if (!Projects[data.projectName])
@@ -58,6 +60,7 @@ io.on('connection', (socket) => {
         // check if lobby exists inside of project
         // add user to lobby
         // emit back a response (likely the lobby name)
+
         if (!data || !data.projectName || !data.lobbyName)
             return;
         if (!Projects[data.projectName])
@@ -71,11 +74,13 @@ io.on('connection', (socket) => {
         if (lobby.users[socket.id])
             return;
         lobby.users[socket.id] = new User(socket);
+        lobby.host.emit(`host-${lobby.name}-connection`, "1")
         socket.emit("joinLobbyInstance", data.lobbyName);
     })
 
     socket.on("getLobbies", (data)=>{
         // check if data has project name
+
         if (!data || !data.projectName)
             return;
         if (!Projects[data.projectName])
@@ -92,7 +97,7 @@ io.on('connection', (socket) => {
         // check if data has lobby name
         // check if lobby exits
         // emit data to lobby host
-        
+
         if (!data || !data.projectName || !data.lobbyName || !data.info || !data.name)
             return;
         if (!Projects[data.projectName])
@@ -100,7 +105,7 @@ io.on('connection', (socket) => {
         if (!Projects[data.projectName].lobbies[data.lobbyName])
             return;
         
-        Projects[data.projectName].lobbies[data.lobbyName].host.emit("host-" + Projects[data.projectName].lobbies[data.lobbyName].name + "-" + data.name, data.info);
+        Projects[data.projectName].lobbies[data.lobbyName].host.emit(`host-${Projects[data.projectName].lobbies[data.lobbyName].name}-${data.name}`, data.info);
     })
 
     socket.on("tellClient", (data)=>{
@@ -120,7 +125,7 @@ io.on('connection', (socket) => {
         
         Object.keys(Projects[data.projectName].lobbies[data.lobbyName].users).forEach(userIndex=>{
             user = Projects[data.projectName].lobbies[data.lobbyName].users[userIndex];
-            user.socket.emit("client-" + Projects[data.projectName].lobbies[data.lobbyName].name + "-" + data.name, data.info);
+            user.socket.emit(`client-${Projects[data.projectName].lobbies[data.lobbyName].name}-${data.name}`, data.info);
         })
     })
 
