@@ -12,21 +12,18 @@ var User = require("./objects/user.js")
 var Projects = {
 
 }
-// temp
-global.Projects = Projects;
+
 
 // Connection Port
 http.listen(process.env.PORT || 3000);
 
 io.on('connection', (socket) => {
 
-
-
     socket.on("createProjectInstance", (data)=>{
         // check if data has a project name
         // check if project name already exists in given context
         // create a new project instance
-        
+
         if (!data || !data.projectName)
             return;
         if (Projects[data.projectName])
@@ -148,4 +145,5 @@ io.on('connection', (socket) => {
         })
 
     })
+    
 });
